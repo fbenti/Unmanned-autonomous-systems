@@ -1,4 +1,4 @@
-function [ route ] = astar_3d( map, start, end_, length_cost )
+function [route] = astar_3d(map, start, end_, length_cost)
     % Modify to be if length cost is given, set it to 1, if not given
     % set it to 0 and always use it in the calculation loop 
     
