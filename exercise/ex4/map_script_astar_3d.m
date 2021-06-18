@@ -6,10 +6,10 @@ clc
 % wall file is an obstacle. The position of the obstacle is defined in the
 % wall file by its x y z coordinates. The three last elements is
 % the size of the maze, the starting position and goal position
-load('wall.txt')
+% load('wall_test.txt')
 % If a different named file is used, then write it into the wall variable
 % e.g. wall = maze_2;
-wall = wall;
+wall = load('wall_test.txt');
 
 % Define the map size
 max_x = wall(length(wall) - 2, 1);
@@ -26,10 +26,10 @@ for i = 1:(length(wall) - 3)
 end
 
 % Define the starting and end position
-start = wall(length(wall) - 1, :);
-end_ = wall(length(wall), :);
-% start = [1 1 2];
-% end_=[4 6 2];
+% start = wall(length(wall) - 1, :);
+% end_ = wall(length(wall), :);
+start = [0 0 1] + [1 1 0];
+end_=[4 5 1];
 
 % Make sure the start and end is not an obstacle
 map(start(1), start(2), start(3)) = 0;
@@ -37,9 +37,9 @@ map(end_(1), end_(2), end_(3)) = 0;
 
 
 %% Run the algorithm to optain the route
-route = astar_3d(map, start, end_, 1);
+route = greedy_astar_3d(map, start, end_, 1);
 
-
+route = optimized_route(route)
 %% Draw the map
 % Draw a figure to show the map and process
 hold off
