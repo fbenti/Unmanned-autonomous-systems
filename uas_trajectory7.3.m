@@ -1,0 +1,79 @@
+% Initialization
+close all
+clear
+clc
+load('uas_parameters.mat');
+% Trajectory generation
+
+% knots = [0 3 5];
+% waypoints = cell(1,3);
+% waypoints{1} = [0 ; 0 ; 1];
+% waypoints{2} = [8.2 ; 0.8 ; 1];
+% waypoints{3} = [9 ; 9 ; 1];
+% corridors.times = [1 4];
+% corridors.x_lower = [-1 8];
+% corridors.x_upper = [10 10];
+% corridors.y_lower = [-1 -1];
+% corridors.y_upper = [1 10];
+% corridors.z_lower = [0 0];
+% corridors.z_upper = [2 2];
+knots = [0 5];
+waypoints = cell(1,2);
+waypoints{1} = [0 ; 0 ; 1];
+waypoints{2} = [9 ; 9 ; 1];
+% Fix this...
+order = 7;
+corridors.times = [1.9 2.5 3];
+corridors.x_lower = [-1 8.5 8.5];
+corridors.x_upper = [9.5 9.5 9.5];
+corridors.y_lower = [-0.5 -0.5 0.5];
+corridors.y_upper = [0.5 0.5 10];
+corridors.z_lower = [0 0 0];
+corridors.z_upper = [2 2 2];
+% corridors.times = [1 1.2 1.3 1.5 2 2.3 2.5 3 3.5 4];
+% corridors.x_lower = [-1 1.5 3 4.5 6 7.5 8 8 8 8];
+% corridors.x_upper = [1 2.5 4 5.5 7 9.5 9 9 9 10];
+% corridors.y_lower = [-1 -1 -1 -1 -1 -1 1.5 3 5 8];
+% corridors.y_upper = [1 1 1 1 1 1 2.5 4.5 7.5 10];
+% corridors.z_lower = [0 0 0 0 0 0 0 0 0 0];
+% corridors.z_upper = [2 2 2 2 2 2 2 2 2 2];
+% ...until here
+make_plots = true;
+
+poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots);
+%% 7.3
+
+% Initialization
+close all
+clear
+clc
+load('uas_parameters.mat');
+
+knots = [0 1 2 3 5];
+waypoints = cell(1,5);
+waypoints{1} = [4 ; 4 ; 3];
+waypoints{2} = [0 ; 0 ; 3];
+waypoints{3} = [9 ; 0 ; 3];
+waypoints{4} = [9 ; 9 ; 3];
+waypoints{5} = [0 ; 9 ; 3];
+% Fix this...
+order = 12;
+% corridors.times = [1 1 2 3.5 4];
+% corridors.x_lower = [5 -0.5 8.5 -0.5 -0.5];
+% corridors.x_upper = [6 9.5 9.5 8.5 0.5];
+% corridors.y_lower = [-0.5 -0.5 0.5 8.5 0.5];
+% corridors.y_upper = [0.5 0.5 9.5 9.5 8.5];
+% corridors.z_lower = [2 2 2 2 2];
+% corridors.z_upper = [4 4 4 4 4];
+%%%% TRY 2
+corridors.times = [0.5 1.5 2.5 3.5];
+corridors.x_lower = [-2 4 11.2 6];
+corridors.x_upper = [0 5 12.2 7];
+corridors.y_lower = [3 -3.5 4 10.5];
+corridors.y_upper = [4 -2.5 5 11.5];
+corridors.z_lower = [2 2 2 2];
+corridors.z_upper = [4 4 4 4];
+
+make_plots = true;
+
+poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots);
