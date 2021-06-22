@@ -39,7 +39,7 @@ map(end_(1), end_(2), end_(3)) = 0;
 %% Run the algorithm to optain the route
 route = greedy_astar_3d(map, start, end_, 1);
 
-route = optimized_route(route)
+% route = optimized_route(route)
 %% Draw the map
 % Draw a figure to show the map and process
 hold off
@@ -94,14 +94,14 @@ y_offset = 0.5;
 z_offset = 0.25;
 
 % Make a copy of the route
-route_scaled = route;
+route_scaled = route
 
 % Scale the copy
 route_scaled(:,1) = (route_scaled(:,1) - 1) * x_scale + x_offset;
 route_scaled(:,2) = (route_scaled(:,2) - 1) * y_scale + y_offset;
-route_scaled(:,3) = (route_scaled(:,3) - 1) * z_scale + z_offset;
+route_scaled(:,3) = (route_scaled(:,3) - 1) * z_scale + z_offset
 
 % Print the scaled route
-route_scaled
-length(route)
+% route_scaled
+% length(route)
 
