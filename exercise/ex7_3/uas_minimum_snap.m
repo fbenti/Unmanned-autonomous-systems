@@ -36,7 +36,13 @@ derivative_weights = [0 1 1];
 poly_traj = PolyTrajGen(knots, order, optimization_target, dim, max_continuity);
 
 % initial velocity
-x0d = [0 ; 0 ; 0];
+x0d = cell(1,6);
+x0d{1} = [0 ; 0 ; 0];
+x0d{2} = [-0.5 ; 0 ; 0];
+x0d{3} = [0 ; -0.5 ; 0];
+x0d{4} = [0.5 ; 0 ; 0];
+x0d{5} = [0 ; 0.5 ; 0];
+x0d{6} = [0 ; 0 ; 0];
 % initial acceleration
 x0dd = [0 ; 0 ; 0];
 for m = 1:length(waypoints)
@@ -44,7 +50,7 @@ for m = 1:length(waypoints)
     pin = struct('t',knots(m),'d',0,'X',waypoints{m});
     poly_traj.addPin(pin);
     % Order 1 pin 
-    pin = struct('t',knots(m),'d',1,'X',x0d);
+    pin = struct('t',knots(m),'d',1,'X',x0d{m});
     poly_traj.addPin(pin);
     % Order 2 pin 
     pin = struct('t',knots(m),'d',2,'X',x0dd);
@@ -66,5 +72,5 @@ tic, poly_traj.solve; toc
 % PLOTS
 if make_plots
     poly_traj.showPath(3)
-    poly_traj.showTraj(3)
+%     poly_traj.showTraj(3)
 end

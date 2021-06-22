@@ -25,10 +25,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% INITIALIZATION
-% 
-% clear
-% close all
-% clc
+
+clear
+close all
+clc
 
 %%
 
@@ -37,7 +37,7 @@ load('uas_poly_traj')
 
 %% SIMULATION PARAMETERS
 
-route = [1 -1 1 ; 2 -1 1];
+route = [-2 0 1 ; -2 0 1];
 wall_color = [0.8 0.2 0.2];
 sample_time = 4e-2;
 publish_rate = 1 * sample_time;
