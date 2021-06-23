@@ -1,6 +1,9 @@
+%% Clean
 close all
 clear all
 clc
+% Load parameters
+load('uas_parameters.mat');
 %% Setup the map
 % Load the map from the wall file. Each line, except the two last, in the
 % wall file is an obstacle. The position of the obstacle is defined in the
@@ -104,7 +107,17 @@ route_scaled(:,2) = (route_scaled(:,2) - 1) * y_scale + y_offset;
 route_scaled(:,3) = (route_scaled(:,3) - 1) * z_scale + z_offset;
 
 % Print the scaled route
-route_scaled = [route_scaled; 2.3 2.7 0.25; 2.3 2.6 0.25; 2.3 2.6 0];
+% route_scaled = [route_scaled; 2.3 2.7 0.25; 2.3 2.6 0.25; 2.3 2.6 0];
 route_scaled
+
+% Do smaller step
+route_scaled2 = route_scaled/2
+route_scaled3 = [];
+for i = 1: length(route_scaled)
+    route_scaled3 = [route_scaled3; route_scaled2(i,:); route_scaled(i,:)];
+end
+route_scaled3
+
+route = route_scaled;
 
 
