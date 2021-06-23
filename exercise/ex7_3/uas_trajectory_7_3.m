@@ -2,78 +2,52 @@
 close all
 clear
 clc
+% Load parameters
 load('uas_parameters.mat');
+load('uas_thrust_constants.mat');
+
 % Trajectory generation
+% HOOP POSITION
+start = [0; -2; 1.3];
+end_ = [0; -2; 0];
+offset1 = [0; -0.015; 0.06];
+% offset = offset1;
+offset2 = [0.015; -0.02; 0.06];
+offset3 = [0; 0.02; 0.06];
+offset4 = [-0.06; -0.06; 0.07];
 
-% knots = [0 3 5];
-% waypoints = cell(1,3);
-% waypoints{1} = [0 ; 0 ; 1];
-% waypoints{2} = [8.2 ; 0.8 ; 1];
-% waypoints{3} = [9 ; 9 ; 1];
-% corridors.times = [1 4];
-% corridors.x_lower = [-1 8];
-% corridors.x_upper = [10 10];
-% corridors.y_lower = [-1 -1];
-% corridors.y_upper = [1 10];
-% corridors.z_lower = [0 0];
-% corridors.z_upper = [2 2];
-knots = [0 5];
-waypoints = cell(1,2);
-waypoints{1} = [0 ; 0 ; 1];
-waypoints{2} = [9 ; 9 ; 1];
+% TIME
+% knots = [0 3 8 13 18 23];
+knots = [0 5 10 15 20 25 28];
+
+% WAYPOINT
+waypoints = cell(1,6);
+waypoints{1} = start;
+waypoints{2} = p_h1 + offset1;
+waypoints{3} = p_h2 + offset2;
+waypoints{4} = p_h3 + offset3;
+waypoints{5} = p_h4 + offset4;
+waypoints{6} = end_;
+
 % Fix this...
-order = 7;
-corridors.times = [1.9 2.5 3];
-corridors.x_lower = [-1 8.5 8.5];
-corridors.x_upper = [9.5 9.5 9.5];
-corridors.y_lower = [-0.5 -0.5 0.5];
-corridors.y_upper = [0.5 0.5 10];
-corridors.z_lower = [0 0 0];
-corridors.z_upper = [2 2 2];
-% corridors.times = [1 1.2 1.3 1.5 2 2.3 2.5 3 3.5 4];
-% corridors.x_lower = [-1 1.5 3 4.5 6 7.5 8 8 8 8];
-% corridors.x_upper = [1 2.5 4 5.5 7 9.5 9 9 9 10];
-% corridors.y_lower = [-1 -1 -1 -1 -1 -1 1.5 3 5 8];
-% corridors.y_upper = [1 1 1 1 1 1 2.5 4.5 7.5 10];
-% corridors.z_lower = [0 0 0 0 0 0 0 0 0 0];
-% corridors.z_upper = [2 2 2 2 2 2 2 2 2 2];
+offset = [0; 0; 0.06];
+order = 10;
+corridors.times = [2.5 7.5 12.5 17.5 22.5 24];
+corr_1 = [1.8; -0.5; 1.33] + offset;
+corr_2 = [-1.4; -0.5; 1.33] + offset;
+corr_3 = [-1.6; -3.7; 1.2] + offset;
+corr_4 = [1.8; -3.7; 1.25] + offset;
+corr_5 = corr_1;
+corr_6 = [0; -2; 1];
+
+delta = 0.3;
+corridors.x_lower = [corr_1(1) corr_2(1) corr_3(1) corr_4(1) corr_5(1) corr_6(1)] - delta;
+corridors.x_upper = [corr_1(1) corr_2(1) corr_3(1) corr_4(1) corr_5(1) corr_6(1)] + delta;
+corridors.y_lower = [corr_1(2) corr_2(2) corr_3(2) corr_4(2) corr_5(2) corr_6(2)] - delta;
+corridors.y_upper = [corr_1(2) corr_2(2) corr_3(2) corr_4(2) corr_5(2) corr_6(2)] + delta;
+corridors.z_lower = [corr_1(3) corr_2(3) corr_3(3) corr_4(3) corr_5(3) corr_6(3)] - delta;
+corridors.z_upper = [corr_1(3) corr_2(3) corr_3(3) corr_4(3) corr_5(3) corr_6(3)] + delta;
+
 % ...until here
-make_plots = true;
-
-poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots);
-%% 7.3
-
-% Initialization
-close all
-clear
-clc
-load('uas_parameters.mat');
-
-knots = [0 1 2 3 5];
-waypoints = cell(1,5);
-waypoints{1} = [4 ; 4 ; 3];
-waypoints{2} = [0 ; 0 ; 3];
-waypoints{3} = [9 ; 0 ; 3];
-waypoints{4} = [9 ; 9 ; 3];
-waypoints{5} = [0 ; 9 ; 3];
-% Fix this...
-order = 12;
-% corridors.times = [1 1 2 3.5 4];
-% corridors.x_lower = [5 -0.5 8.5 -0.5 -0.5];
-% corridors.x_upper = [6 9.5 9.5 8.5 0.5];
-% corridors.y_lower = [-0.5 -0.5 0.5 8.5 0.5];
-% corridors.y_upper = [0.5 0.5 9.5 9.5 8.5];
-% corridors.z_lower = [2 2 2 2 2];
-% corridors.z_upper = [4 4 4 4 4];
-%%%% TRY 2
-corridors.times = [0.5 1.5 2.5 3.5];
-corridors.x_lower = [-2 4 11.2 6];
-corridors.x_upper = [0 5 12.2 7];
-corridors.y_lower = [3 -3.5 4 10.5];
-corridors.y_upper = [4 -2.5 5 11.5];
-corridors.z_lower = [2 2 2 2];
-corridors.z_upper = [4 4 4 4];
-
-make_plots = true;
-
+make_plots = 1;
 poly_traj = uas_minimum_snap(knots, order, waypoints, corridors, make_plots);
