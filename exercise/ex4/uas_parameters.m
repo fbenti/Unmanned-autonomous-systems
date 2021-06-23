@@ -31,9 +31,7 @@ close all
 clc
 
 %%
-
-load('uas_thrust_constants')
-load('uas_poly_traj')
+load('uas_parameters.mat')
 
 %% SIMULATION PARAMETERS
 
