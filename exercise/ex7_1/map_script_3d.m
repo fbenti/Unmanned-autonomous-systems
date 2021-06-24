@@ -117,17 +117,15 @@ route_scaled(:,1) = (route_scaled(:,1) - 1) * x_scale + x_offset;
 route_scaled(:,2) = (route_scaled(:,2) - 1) * y_scale + y_offset;
 route_scaled(:,3) = (route_scaled(:,3) - 1) * z_scale + z_offset;
 
+for i= 1:length(route_scaled)
+    if route_scaled(i,3) >= 1.75
+        route_scaled(i,3) = 1.75
+    end
+end
 % Print the scaled route
 % route_scaled = [route_scaled; 2.3 2.7 0.55; 2.3 2.6 0.55; 2.3 2.6 -0.2];
 route_scaled;
 
-% Do smaller step
-route_scaled2 = route_scaled/2
-route_scaled3 = [];
-for i = 1: length(route_scaled)
-    route_scaled3 = [route_scaled3; route_scaled2(i,:); route_scaled(i,:)];
-end
-route_scaled3;
 
 route = route_scaled
 
