@@ -38,10 +38,10 @@ poly_traj = PolyTrajGen(knots, order, optimization_target, dim, max_continuity);
 % initial velocity
 x0d = cell(1,6);
 x0d{1} = [0 ; 0 ; 0];
-x0d{2} = [-0.5 ; 0 ; 0];
-x0d{3} = [0 ; -0.5 ; 0];
-x0d{4} = [0.5 ; 0 ; 0];
-x0d{5} = [0 ; 0.5 ; 0];
+x0d{2} = [-0.3 ; 0 ; 0];
+x0d{3} = [0 ; -0.3 ; 0];
+x0d{4} = [0.3 ; 0 ; 0];
+x0d{5} = [0 ; 0.3 ; 0];
 x0d{6} = [0 ; 0 ; 0];
 % initial acceleration
 x0dd = [0 ; 0 ; 0];

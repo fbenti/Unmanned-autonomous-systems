@@ -28,3 +28,5 @@ u_h2 = u_h(:,2);
 u_h3 = u_h(:,3);
 u_h4 = u_h(:,4);
 
+save('hoop_pos.mat', 'p_h1', 'p_h2', 'p_h3', 'p_h4')
+
