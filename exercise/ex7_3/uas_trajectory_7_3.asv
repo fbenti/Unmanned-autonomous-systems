@@ -5,18 +5,18 @@
 % Load parameters
 load('uas_parameters.mat');
 load('uas_thrust_constants.mat');
-% p1 = 11.8;
-% p2 = -11.6;
+p1 = 11.8;
+p2 = -11.6;
 
 % Trajectory generation
 % HOOP POSITION
-start = [0; -2; 0];
+start = [0; -2; 2];
 end_ = [0; -2; 0];
-offset1 = [0; -0.04; 0.06];
+offset1 = [0; -0.020; 0.06];
 % offset = offset1;
-offset2 = [0.015; -0.06; 0.05];
+offset2 = [0.015; -0.06; 0.0];
 offset3 = [0; 0; 0.06];
-offset4 = [-0.11; -0.06; 0.08];
+offset4 = [-0.13; -0.06; 0.09];
 
 % TIME
 % knots = [0 3 8 13 18 23];

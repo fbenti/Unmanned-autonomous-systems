@@ -36,8 +36,9 @@ load('uas_thrust_constants')
 load('uas_poly_traj')
 
 %% SIMULATION PARAMETERS
-
-route = [1 -1 1 ; 2 -1 1];
+p1 = 11.8;
+p2 = -11.6;
+% route = [1 -1 1 ; 2 -1 1];
 wall_color = [0.8 0.2 0.2];
 sample_time = 4e-2;
 publish_rate = 1 * sample_time;

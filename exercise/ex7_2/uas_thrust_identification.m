@@ -9,7 +9,7 @@
 % out.pwm = pwm;;
 % out.acceleration = acceleration;
 
-load('uas_thrust_data.mat')
+% load('uas_thrust_data.mat')
 
 g = 9.81;
 
@@ -36,6 +36,7 @@ result = line_fit(x, y);
 % p2 = result.p2 - 3;
 p1 = result(1)
 p2 = result(2)
+save('uas_thrust_constants_ivan.mat', 'p1', 'p2')
 % save('uas_thrust_constants.mat', 'p1', 'p2')
 
 
