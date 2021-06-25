@@ -13,10 +13,9 @@ load('hoop_pos.mat');
 % HOOP POSITION
 start = [0; -2; 0.3];
 end_ = [0; -2; 0];
-offset1 = [0.11; -0.02; 0.08];
-% offset = offset1;
-offset2 = [0.0145; -0.06; 0.06];
-offset3 = [0; -0.03; 0.07];
+offset1 = [0.11; 0; 0.08];
+offset2 = [0.0155; -0.06; 0.06];
+offset3 = [0; -0.01; 0.07];
 offset4 = [-0.04; -0.06; 0.08];
 
 % TIME
